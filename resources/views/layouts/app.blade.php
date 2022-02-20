@@ -94,17 +94,16 @@
 
               <div class="col-md-4 p-0">
                 <div class="card">
-                  <div class="card-header">中央カラム</div>
+                  <div class="card-header">メモ一覧</div>
                   <div class="card-body">
-                    {{-- <h5 class="card-title">Special title treatment</h5> --}}
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                    @foreach ($memos as $memo)
+                      <a class="card-text d-block">{{$memo['content']}}</a>
+                    @endforeach
                   </div>
                 </div>
               </div>
 
               <div class="col-md-6 p-0">
-                右カラム
                 @yield('content')
               </div>
             </div>

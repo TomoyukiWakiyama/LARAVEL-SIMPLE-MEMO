@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// getの場合の処理を書く：getは単にアクセスしてビューを表示する場合
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// POSTの場合の処理を書く：postはformから送信する場合
+Route::post('/store', [HomeController::class, 'store'])->name('store');
