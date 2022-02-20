@@ -69,13 +69,25 @@ class HomeController extends Controller
 
     }
 
-    // POSTのアクションを記載。Request $requestをつけると様々なメソッドが使えて便利になる
+    // 更新するアクションを記載。Request $requestをつけると様々なメソッドが使えて便利になる
     public function update(Request $request)
     {
         $posts = $request->all(); // 送り先のpostデータ全てを取得する=>nameで利用することができる
 
         // editで送られたidからメモを探して更新する
         Memo::where('id', $posts['memo_id']) -> update(['content' => $posts['content']]);
+        
+
+        return redirect( route('home') );
+    }
+
+    // 削除アクションを記載
+    public function destroy(Request $request)
+    {
+        $posts = $request->all(); // 送り先のpostデータ全てを取得する=>nameで利用することができる
+
+        // editで送られたidからメモを探して更新する
+        Memo::where('id', $posts['memo_id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
         
 
         return redirect( route('home') );

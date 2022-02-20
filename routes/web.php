@@ -28,3 +28,5 @@ Route::post('/store', [HomeController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('edit');
 // 更新する処理を書く
 Route::post('/update', [HomeController::class, 'update'])->name('update');
+// 削除する処理を書く
+Route::post('/destroy', [HomeController::class, 'destroy'])->name('destroy');

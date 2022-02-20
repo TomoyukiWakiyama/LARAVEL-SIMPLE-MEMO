@@ -82,7 +82,7 @@
             <!-- col-mdはMax12で割り当てる -->
             <div class="row">
               <div class="col-md-2 p-0">
-                <div class="card">
+                <div class="card text-white bg-secondary">
                   <div class="card-header">左カラム</div>
                   <div class="card-body">
                     {{-- <h5 class="card-title">Special title treatment</h5> --}}
@@ -97,7 +97,11 @@
                   <div class="card-header">メモ一覧</div>
                   <div class="card-body">
                     @foreach ($memos as $memo)
-                      <a href="/edit/{{$memo['id']}}" class="card-text d-block">{{$memo['content']}}</a>
+                      @if (!empty($edit_memo['id']) && $memo['id'] === $edit_memo['id'] )
+                        <a href="/edit/{{$memo['id']}}" class="bg-info text-white text-decoration-none p-2 d-block">{{$memo['content']}}</a>
+                      @else
+                        <a href="/edit/{{$memo['id']}}" class="card-text text-decoration-none p-2 d-block">{{$memo['content']}}</a>
+                      @endif
                     @endforeach
                   </div>
                 </div>
