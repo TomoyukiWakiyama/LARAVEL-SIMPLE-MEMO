@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<!-- 子ビューから親ビューファイルlayouts>authを指定する -->
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">

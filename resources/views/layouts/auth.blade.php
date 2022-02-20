@@ -77,39 +77,9 @@
         </nav>
         <!-- 自動生成header部分_終了 -->
 
-        <!-- 3カラムに変更=bootstrapで作成 -->
-        <main class="">
-            <!-- col-mdはMax12で割り当てる -->
-            <div class="row">
-              <div class="col-md-2 p-0">
-                <div class="card">
-                  <div class="card-header">左カラム</div>
-                  <div class="card-body">
-                    {{-- <h5 class="card-title">Special title treatment</h5> --}}
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 p-0">
-                <div class="card">
-                  <div class="card-header">中央カラム</div>
-                  <div class="card-body">
-                    {{-- <h5 class="card-title">Special title treatment</h5> --}}
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-0">
-                右カラム
-                @yield('content')
-              </div>
-            </div>
+        <main class="py-4">
+          @yield('content')
         </main>
-        
     </div>
 </body>
 </html>
