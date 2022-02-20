@@ -50,4 +50,34 @@ class HomeController extends Controller
 
         return redirect( route('home') );
     }
+
+    public function edit($id)
+    {
+        // ここでメモデータを取得する
+        // indexと同じく、編集画面でも表示する必要があるため残す
+        $memos = Memo::select('memos.*')
+                  ->where('user_id', '=', \Auth::id())
+                  // deleted_atがnullのもの->削除日時が入っていない=削除されていないもの
+                  ->whereNull('deleted_at')
+                  ->orderBy('updated_at', 'DESC')
+                  ->get();
+
+        // 編集するメモ1件だけをidから取得する
+        $edit_memo = Memo::find($id);
+
+        return view('edit', compact('memos', 'edit_memo'));
+
+    }
+
+    // POSTのアクションを記載。Request $requestをつけると様々なメソッドが使えて便利になる
+    public function update(Request $request)
+    {
+        $posts = $request->all(); // 送り先のpostデータ全てを取得する=>nameで利用することができる
+
+        // editで送られたidからメモを探して更新する
+        Memo::where('id', $posts['memo_id']) -> update(['content' => $posts['content']]);
+        
+
+        return redirect( route('home') );
+    }
 }

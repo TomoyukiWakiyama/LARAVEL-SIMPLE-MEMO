@@ -24,3 +24,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 // POSTの場合の処理を書く：postはformから送信する場合
 Route::post('/store', [HomeController::class, 'store'])->name('store');
+// 更新するデータを表示させる処理を書く
+Route::get('/edit/{id}', [HomeController::class, 'edit'])->name('edit');
+// 更新する処理を書く
+Route::post('/update', [HomeController::class, 'update'])->name('update');
