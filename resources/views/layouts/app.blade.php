@@ -97,7 +97,7 @@
                   <div class="card-header">メモ一覧</div>
                   <div class="card-body">
                     @foreach ($memos as $memo)
-                      @if (!empty($edit_memo['id']) && $memo['id'] === $edit_memo['id'] )
+                      @if (!empty($edit_memo[0]['id']) && $memo['id'] === $edit_memo[0]['id'] )
                         <a href="/edit/{{$memo['id']}}" class="bg-info text-white text-decoration-none p-2 d-block">{{$memo['content']}}</a>
                       @else
                         <a href="/edit/{{$memo['id']}}" class="card-text text-decoration-none p-2 d-block">{{$memo['content']}}</a>
