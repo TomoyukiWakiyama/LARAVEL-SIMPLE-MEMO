@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/layout.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -84,7 +85,7 @@
               <div class="col-md-2 p-0">
                 <div class="card text-white bg-secondary">
                   <div class="card-header">左カラム</div>
-                  <div class="card-body">
+                  <div class="card-body my-card-body">
                     {{-- <h5 class="card-title">Special title treatment</h5> --}}
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                     {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
@@ -95,7 +96,7 @@
               <div class="col-md-4 p-0">
                 <div class="card">
                   <div class="card-header">メモ一覧</div>
-                  <div class="card-body">
+                  <div class="card-body my-card-body">
                     @foreach ($memos as $memo)
                       @if (!empty($edit_memo[0]['id']) && $memo['id'] === $edit_memo[0]['id'] )
                         <a href="/edit/{{$memo['id']}}" class="bg-info text-white text-decoration-none p-2 d-block">{{$memo['content']}}</a>

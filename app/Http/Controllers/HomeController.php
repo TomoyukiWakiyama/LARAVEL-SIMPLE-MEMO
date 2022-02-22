@@ -44,7 +44,7 @@ class HomeController extends Controller
 
         
         // compactの中に上で取得した$memosを入れることでbladeでmemosの変数が使えるようになる！
-        return view('create', compact('memos'), compact('tags'));
+        return view('create', compact('tags'));
     }
 
     // POSTのアクションを記載。Request $requestをつけると様々なメソッドが使えて便利になる
@@ -81,14 +81,7 @@ class HomeController extends Controller
 
     public function edit($id)
     {
-        // ここでメモデータを取得する
-        // indexと同じく、編集画面でも表示する必要があるため残す
-        $memos = Memo::select('memos.*')
-                  ->where('user_id', '=', \Auth::id())
-                  // deleted_atがnullのもの->削除日時が入っていない=削除されていないもの
-                  ->whereNull('deleted_at')
-                  ->orderBy('updated_at', 'DESC')
-                  ->get();
+        
 
         // 編集するメモ取得する
         $edit_memo = Memo::select('memos.*', 'tags.id AS tag_id')
@@ -110,7 +103,7 @@ class HomeController extends Controller
                 ->orderBy('id', 'DESC')
                 ->get();
         
-        return view('edit', compact('memos', 'edit_memo', 'include_tags', 'tags'));
+        return view('edit', compact('edit_memo', 'include_tags', 'tags'));
 
     }
 
@@ -157,5 +150,11 @@ class HomeController extends Controller
         
 
         return redirect( route('home') );
+    }
+
+    // 演習用ページ作成。ただレンダリングする
+    public function fromphp()
+    {
+        return view('fromphp');
     }
 }

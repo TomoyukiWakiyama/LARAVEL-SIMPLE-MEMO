@@ -5,7 +5,7 @@
     <div class="card-header">
         メモ編集
         {{-- 削除用のpostを書く --}}
-        <form class="card-body" action="{{route('destroy')}}" method="POST">
+        <form action="{{route('destroy')}}" method="POST">
             {{-- @csrf：なりすまし（他人と偽って）送信を防止 LaravelでPOSTする際は必ずつける --}}
             @csrf
             <input type="hidden" name="memo_id" value="{{$edit_memo[0]['id']}}">
@@ -13,7 +13,7 @@
         </form>
     </div>
     
-    <form class="card-body" action="{{ route('update') }}" method="POST">
+    <form class="card-body my-card-body" action="{{ route('update') }}" method="POST">
         {{-- @csrf：なりすまし（他人と偽って）送信を防止 LaravelでPOSTする際は必ずつける --}}
         @csrf
         {{-- 更新用にidを見えない場所で保存する --}}
@@ -27,7 +27,7 @@
             <input class="form-check-input" type="checkbox" name="tags[]" id="{{$t['id']}}" value="{{$t['id']}}"
                     {{in_array($t['id'], $include_tags) ? 'checked' : ''}}>
             <label class="form-check-label" for="{{$t['id']}}" {{$t['name']}} >{{$t['name']}}</label>
-            </div>
+        </div>
     @endforeach
     
         <input type="text" class="form-control w-50 mb-3" name="new_tag" placeholder="新しいタグを追加する" />
